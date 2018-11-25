@@ -1,7 +1,8 @@
-int main
+﻿int main
 {
 	printf("Hello World");
 {
 
 methond{
+我是本地我要造反
 本地本地 我是云端
