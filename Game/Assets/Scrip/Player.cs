@@ -1,0 +1,88 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player : MonoBehaviour {
+
+    private SpriteRenderer sr;
+    public int Speed = 5;
+    float force = 250;
+    private bool Is_jump = false;
+    private bool Is_DoubleJump = false;
+    public bool k = false;//防止跳起来的时候有走动的动画
+    private Rigidbody2D kk;//拿到刚体的组件
+    private Animator am;
+
+
+    private void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        kk = GetComponent<Rigidbody2D>();
+    }// Use this for initialization
+    void Start () {
+        am = GetComponent<Animator>();
+    }
+	// Update is called once per frame
+	void FixedUpdate () {
+        MoveJump();
+	}
+    void OnCollisionEnter2D(Collision2D collision)//判断机制，当物体碰到标签诶K的物体的时候就直接关掉
+    {
+        if (collision.collider.tag == "Plane")
+        {
+            k = false;
+            Is_jump = false;
+            Is_DoubleJump = false;
+
+        }
+    }
+        void MoveJump()
+        {
+        if (!(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)))
+        {
+            am.SetTrigger("Stand");//在不做移动的时候，就让他播放站立的动画：：但是做不到好像，先保留这一行吧
+        }
+        float h = Input.GetAxisRaw("Horizontal");   
+        if (h > 0)
+        {
+            transform.Translate(Vector3.right * h * Speed * Time.fixedDeltaTime, Space.World);
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            if (!k)
+            {
+                am.SetTrigger("Walk");//当他在不在跳跃并且按下AD时候，播放走路的动画
+            }
+        }
+        else if (h < 0)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            transform.Translate(Vector3.right * -h * Speed * Time.fixedDeltaTime);
+            if (!k)
+            {
+                am.SetTrigger("Walk");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+            {
+           
+            if (!Is_jump)
+                {
+                am.SetTrigger("Jump");//调用跳跃的动画
+                k = true;//当我们按下跳跃的时候，就不能让他同时播放走路的动画
+                kk.AddForce(Vector3.up * force);
+                    Is_jump = true;//第一次跳的的时候的布尔值，下面会有一个重置，知道它碰到地设定的东西都不会改变               
+                }
+                else if (Is_DoubleJump)
+                { 
+                    return;
+                }
+                else
+                {
+                am.SetTrigger("Jump");
+                k = true;
+                kk.AddForce(Vector3.up * force * 1.2f);
+                Is_DoubleJump = true;//二段跳的判值，他之前是判断是不是已经使用过二段跳了，如果没使用的话就可以进入，进入之后就关掉，没碰到设定的东西不会改变
+                }
+            }
+        }
+    }
+
