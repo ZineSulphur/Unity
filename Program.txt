@@ -4,4 +4,5 @@ int main
 {
 
 methond{
-我觉得不太行啊这个玩意dsadasdasdas
+我觉得不太行啊这个玩意
+我修改一下这个东西
