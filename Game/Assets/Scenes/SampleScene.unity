@@ -1043,7 +1043,7 @@ MonoBehaviour:
   maxPos: {fileID: 1552310632}
   lowPos: {fileID: 981288992}
   highPos: {fileID: 101540408}
-  speed: 3
+  speed: 10
   direction: 1
 --- !u!1 &528218060
 GameObject:
