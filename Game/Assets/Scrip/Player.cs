@@ -27,7 +27,6 @@ public class Player : MonoBehaviour {
     void Awake()
     {
         _instance = this;
-        sr = GetComponent<SpriteRenderer>();
         kk = GetComponent<Rigidbody2D>();
     }// Use this for initialization
     void Start () {
