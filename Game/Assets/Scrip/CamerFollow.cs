@@ -11,6 +11,7 @@ public class CamerFollow : MonoBehaviour
     public GameObject lowPos;
     public GameObject highPos;
     public float speed = 1;
+    public float speedY;
     public float direction = 1;
 
     private float minPosx;
@@ -31,6 +32,7 @@ public class CamerFollow : MonoBehaviour
     void FixedUpdate()
     {
         FixCamaraPos();
+        speedY = Mathf.Abs(Player.Instance.speedY);
     }
 
     void FixCamaraPos()
@@ -49,11 +51,11 @@ public class CamerFollow : MonoBehaviour
         }
         if (pPoxY - cPoxY > direction)
         {
-            transform.position = new Vector3(transform.position.x, cPoxY + Time.deltaTime * speed, transform.position.z);
+            transform.position = new Vector3(transform.position.x, cPoxY + Time.deltaTime * speedY, transform.position.z);
         }
         if (pPoxY - cPoxY < -direction)
         {
-            transform.position = new Vector3(transform.position.x, cPoxY - Time.deltaTime * speed, transform.position.z);
+            transform.position = new Vector3(transform.position.x, cPoxY - Time.deltaTime * speedY, transform.position.z);
         }
         float realPosX = Mathf.Clamp(transform.position.x, minPosx, maxPosx);
         float realPoxY = Mathf.Clamp(transform.position.y, lowPosy, highPosy);

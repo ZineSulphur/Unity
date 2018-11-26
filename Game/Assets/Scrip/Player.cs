@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    private SpriteRenderer sr;
-    public int Speed = 5;
+    public float Speed = 5;
+    public float speedY;
     float force = 250;
     private bool Is_jump = false;
     private bool Is_DoubleJump = false;
@@ -13,10 +13,20 @@ public class Player : MonoBehaviour {
     private Rigidbody2D kk;//拿到刚体的组件
     private Animator am;
 
+    //创建instance方法，使其他脚本可以使用Player.Instance.XXX来访问这个脚本的变量和函数（要public的变量或函数）
+    public static Player _instance;
 
-    private void Awake()
+    public static Player Instance
     {
-        sr = GetComponent<SpriteRenderer>();
+        get
+        {
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        _instance = this;
         kk = GetComponent<Rigidbody2D>();
     }// Use this for initialization
     void Start () {
@@ -25,6 +35,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         MoveJump();
+        speedY = kk.velocity.y;
 	}
     void OnCollisionEnter2D(Collision2D collision)//判断机制，当物体碰到标签诶K的物体的时候就直接关掉
     {
@@ -36,8 +47,9 @@ public class Player : MonoBehaviour {
 
         }
     }
-        void MoveJump()
-        {
+
+    void MoveJump()
+    {
         if (!(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)))
         {
             am.SetTrigger("Stand");//在不做移动的时候，就让他播放站立的动画：：但是做不到好像，先保留这一行吧
