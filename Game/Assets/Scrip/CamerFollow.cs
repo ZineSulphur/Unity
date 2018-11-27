@@ -5,6 +5,7 @@ using UnityEngine;
 public class CamerFollow : MonoBehaviour
 {
 
+    public Material LOSMaskMaterial;
     public GameObject player;
     public GameObject minPos; //摄像机能在最左端位置放一个空物体来获取物质
     public GameObject maxPos;
@@ -60,5 +61,9 @@ public class CamerFollow : MonoBehaviour
         float realPosX = Mathf.Clamp(transform.position.x, minPosx, maxPosx);
         float realPoxY = Mathf.Clamp(transform.position.y, lowPosy, highPosy);
         transform.position = new Vector3(realPosX, realPoxY, transform.position.z);
+    }
+    private void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        Graphics.Blit(source, destination, LOSMaskMaterial);
     }
 }
