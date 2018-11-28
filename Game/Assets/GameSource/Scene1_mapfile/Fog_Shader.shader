@@ -47,7 +47,7 @@ Shader "Custom/LOSMaskShader"
 				float4 mask = tex2D(_LOSMaskTexture,i.uv);
 				float4 main = tex2D(_MainTex,i.uv);
 
-				main = main * saturate(mask.a + 0.5);    //0.2代表不可见区域的可见度。也可以把它暴露成一个变量
+				main = main * saturate(mask.a + 1);    //0.2代表不可见区域的可见度。也可以把它暴露成一个变量
 				return main;
 			}
 			ENDCG

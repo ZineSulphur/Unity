@@ -16,6 +16,10 @@ public class Player : MonoBehaviour {
     //创建instance方法，使其他脚本可以使用Player.Instance.XXX来访问这个脚本的变量和函数（要public的变量或函数）
     public static Player _instance;
 
+    public void MinPlayer()//改变物体的大小，在使用镜子的收调此函数
+    {
+        transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);//缩小的大小
+    }
     public static Player Instance
     {
         get
@@ -28,6 +32,7 @@ public class Player : MonoBehaviour {
     {
         _instance = this;
         kk = GetComponent<Rigidbody2D>();
+      
     }// Use this for initialization
     void Start () {
         am = GetComponent<Animator>();
@@ -36,7 +41,9 @@ public class Player : MonoBehaviour {
 	void FixedUpdate () {
         MoveJump();
         speedY = kk.velocity.y;
-	}
+
+
+    }
     void OnCollisionEnter2D(Collision2D collision)//判断机制，当物体碰到标签诶K的物体的时候就直接关掉
     {
         if (collision.collider.tag == "Plane")
@@ -47,7 +54,7 @@ public class Player : MonoBehaviour {
 
         }
     }
-
+ 
     void MoveJump()
     {
         if (!(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)))
@@ -96,5 +103,6 @@ public class Player : MonoBehaviour {
                 }
             }
         }
+   
     }
 
