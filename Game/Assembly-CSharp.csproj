@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scrip\FowC.cs" />
      <Compile Include="Assets\Scrip\LostMask.cs" />
      <Compile Include="Assets\Scrip\Mirror.cs" />
+     <Compile Include="Assets\Scrip\MirrorPlayer.cs" />
      <Compile Include="Assets\Scrip\Player.cs" />
      <None Include="Assets\GameSource\Scene1_mapfile\Fog_Shader.shader" />
  <Reference Include="UnityEditor.StandardEvents">
