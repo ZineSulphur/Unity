@@ -15,11 +15,6 @@ public class Player : MonoBehaviour {
 
     //创建instance方法，使其他脚本可以使用Player.Instance.XXX来访问这个脚本的变量和函数（要public的变量或函数）
     public static Player _instance;
-
-    public void MinPlayer()//改变物体的大小，在使用镜子的收调此函数
-    {
-        transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);//缩小的大小
-    }
     public static Player Instance
     {
         get
@@ -103,6 +98,9 @@ public class Player : MonoBehaviour {
                 }
             }
         }
-   
+    public void MinPlayer()//改变物体的大小，在使用镜子的收调此函数
+    {
+        transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);//缩小的大小
     }
+}
 
