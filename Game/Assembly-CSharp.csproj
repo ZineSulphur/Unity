@@ -53,8 +53,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scrip\Attackman.cs" />
+     <Compile Include="Assets\Scrip\Bullet.cs" />
      <Compile Include="Assets\Scrip\CamerFollow.cs" />
+     <Compile Include="Assets\Scrip\Door.cs" />
+     <Compile Include="Assets\Scrip\EnemyAI.cs" />
      <Compile Include="Assets\Scrip\FowC.cs" />
+     <Compile Include="Assets\Scrip\Key.cs" />
      <Compile Include="Assets\Scrip\LostMask.cs" />
      <Compile Include="Assets\Scrip\Mirror.cs" />
      <Compile Include="Assets\Scrip\MirrorPlayer.cs" />

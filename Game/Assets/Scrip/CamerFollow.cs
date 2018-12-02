@@ -18,10 +18,23 @@ public class CamerFollow : MonoBehaviour
     private float maxPosx;
     private float lowPosy;
     private float highPosy;
+    public static CamerFollow _instance;
+    public static CamerFollow Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
 
     // Use this for initialization
+    void Awake()
+    {
+        _instance = this;
+    }
     void Start()
     {
+       
         minPosx = minPos.transform.position.x;
         maxPosx = maxPos.transform.position.x;
         lowPosy = lowPos.transform.position.y;
