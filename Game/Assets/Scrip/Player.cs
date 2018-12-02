@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    public float hp = 1;
     public float Speed = 5;
     public float speedY;
-    float force = 250;
+    float force = 230;
     private bool Is_jump = false;
     private bool Is_DoubleJump = false;
     public bool k = false;//防止跳起来的时候有走动的动画
@@ -15,11 +16,6 @@ public class Player : MonoBehaviour {
 
     //创建instance方法，使其他脚本可以使用Player.Instance.XXX来访问这个脚本的变量和函数（要public的变量或函数）
     public static Player _instance;
-
-    public void MinPlayer()//改变物体的大小，在使用镜子的收调此函数
-    {
-        transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);//缩小的大小
-    }
     public static Player Instance
     {
         get
@@ -51,10 +47,12 @@ public class Player : MonoBehaviour {
             k = false;
             Is_jump = false;
             Is_DoubleJump = false;
-
+        }
+        if(collision.collider.tag=="Key")
+        {
+            Key.Instance.die();
         }
     }
- 
     void MoveJump()
     {
         if (!(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)))
@@ -103,6 +101,17 @@ public class Player : MonoBehaviour {
                 }
             }
         }
-   
+    public void MinPlayer()//改变物体的大小，在使用镜子的收调此函数
+    {
+        transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);//缩小的大小
     }
+    public void TakeDamage(float loss)//受伤时
+    {
+        hp -= loss;
+        if (hp <= 0)
+        {
+            Debug.Log("Died");
+        }
+    }
+}
 

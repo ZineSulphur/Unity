@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Plane
   - Mirror
+  - Enemy
+  - TakeDamage
+  - Key
   layers:
   - Default
   - TransparentFX

@@ -8,21 +8,22 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1836786240878530}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1836786240878530
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4083023398122442}
   - component: {fileID: 114525560787669682}
+  - component: {fileID: 61106487563526820}
   m_Layer: 0
   m_Name: Control
-  m_TagString: Untagged
+  m_TagString: Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +31,7 @@ GameObject:
 --- !u!4 &4083023398122442
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1836786240878530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -40,10 +41,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61106487563526820
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836786240878530}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114525560787669682
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1836786240878530}
   m_Enabled: 1
@@ -51,12 +77,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8885e9d44e17294cacb08c32444af52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position1: {fileID: 0}
-  Position2: {fileID: 0}
-  CreatMirror: {fileID: 0}
+  MirrorRange: 10
+  Distance: 0
+  kkk: 0
+  MirrorPlayerPosition: {x: 0, y: 0, z: 0}
+  MirrorType: 111
+  AttackMan: {fileID: 1192786047363624, guid: e9c43a694e9110c46b959d2fd25498c2, type: 2}
+  Position1: {fileID: 1871705219549996, guid: 5425840fbcc19c84e95d5c9a79c69b35, type: 2}
+  Position2: {fileID: 1230925392503362, guid: a4fd98340348820468bd011d844124de, type: 2}
+  CreatMirror: {fileID: 1864067907211050, guid: e1de8ac48f935b745b60156bfefcc420,
+    type: 2}
+  MirrorPlayer: {fileID: 1684146073051726, guid: 2ca98ce1123359943bdf7fd18f349eb7,
+    type: 2}
+  Light: {fileID: 1229084295655026, guid: 03413f08233342046a3c5bc871cb697f, type: 2}
   M1positon: {x: 0, y: 0}
   M2positon: {x: 0, y: 0}
   Mrotation: {x: 0, y: 0, z: 0}
   ScreenPosition: {x: 356, y: 222.5}
   MousePositionOnScreen: {x: 880.5, y: 591}
   MousePositionInWorld: {x: 11.786516, y: 8.280898}
+  X: 0
+  Y: 0
